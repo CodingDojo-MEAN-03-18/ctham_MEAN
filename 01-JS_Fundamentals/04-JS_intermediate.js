@@ -61,3 +61,5 @@ function drawStars2(x) {
 }
 let xx = [4, "Tom", 1, "Michael", 5, 7, "Jimmy Smith"];
 drawStars2(xx);
+const z = [4, 6, 1, 3, 5, 7, 25]
+drawStars2(z);

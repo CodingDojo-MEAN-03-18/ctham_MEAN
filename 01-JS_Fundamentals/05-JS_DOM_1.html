@@ -3,7 +3,10 @@
     <h1>Students</h1>
     <ul id="main">
         <!-- this is empty-->
-    </ul> 
+    </ul>
+    <div id="target">
+        <!-- this is empty-->
+    </div>
 <script>
     function appendList(array, id){
         // finish this function
@@ -13,9 +16,25 @@
             document.getElementById(id).appendChild(new_li);
         }
     };
+
     let students = ["Jeff", "Jenny", "Javier", "Joslyn", "Joe", "Jane", "Django"];
     let target_id = "main";
     appendList(students, target_id);
+
+    // Bonus
+    function superAppend(array, element, id){
+        // element can be p, li, h1, etc etc
+        for (i=0; i<array.length; i++) {
+            let new_e = document.createElement(element);
+            new_e.innerHTML = array[i];
+            document.getElementById(id).appendChild(new_e);
+        }
+    };
+
+    let coding = ["HTML/CSS","Python","MEAN"];
+    let targetID = "target";
+    let elements = "h1";
+    superAppend(coding, elements, targetID);
 </script>   
 </body>
 </html>

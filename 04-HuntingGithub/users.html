@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>JS - Hunting Github</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="users.js"></script>
+    <link rel="stylesheet" href="users.css">
+</head>
+<body>
+    <div id="wrapper">
+        <table id="tableList">
+            <thead>
+                <tr>
+                    <th>Username</th>
+                    <th>Github Name</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <!-- add user using jQuery form -->
+                </tr>
+            </tbody>
+        </table>
+        <div id="addUser">
+            <h1>Hunting Github</h1>
+            <form id="form_adduser" action="form_adduser" method="post">
+                <ul>
+                    <li>Username: <input type="text" name="username" value="c-tham"></li>
+                </ul>
+                <input type="submit" value="Get Github">
+            </form>
+        </div>
+    </div>
+</body>
+</html>

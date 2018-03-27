@@ -1,0 +1,24 @@
+/* * {
+    outline: 1px dotted red;
+} */
+#wrapper {
+    width: 970px;
+    margin: 0px auto;
+    padding: 0px;
+}
+#tableList, th, td {
+    border: 1px solid black;
+}
+#addUser {
+    width: 300px;
+    padding: 50px 0px;
+}
+#addUser h1 {
+    border-bottom: 1px solid black;
+}
+#addUser ul {
+    list-style: none;
+}
+#addUser form {
+    text-align: right;
+}

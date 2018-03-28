@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>API_AJAX - Open Weather Forecast</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+    
+    var url_begin = "http://api.openweathermap.org/data/2.5/weather?q="
+    var api_key = "&units=imperial&&appid=1b07ff7ffd23e43f04e320c03f3625ab";
+
+        $(document).ready(function() {
+            $('form').submit(function() {
+                // your code here (build up your url)
+                var location = $('input[name="location"]').val();
+                console.log('location - '+location);
+                var url = url_begin + location + api_key;
+                console.log('url - '+url);
+                $.get(url, function(res) {
+                    // your code here   
+                    console.log(res);
+                    var html_string = `
+                        <h1>${res.name}, ${res.sys.country}</h1>
+                        <ul>
+                            <li>Temperature: ${res.main.temp}F</li>
+                            <li>Temperature in Min and Max: ${res.main.temp_min}F - ${res.main.temp_max}F</li>
+                            <li>Humidity: ${res.main.humidity}</li>
+                            <li>Weather: ${res.weather[0].description}</li>
+                        </ul>
+                    `;
+
+                    $('#landing_weather').html(html_string);
+                }, 'json');
+                // don't forget to return false so the page doesn't refresh
+                return false;
+            });
+        });
+
+    </script>
+</head>
+<body>
+    <form action="#">
+        <input type="text" name="location">
+        <input type="submit" value="Get Weather">
+    </form>
+    <div id="landing_weather">
+
+    </div>
+</body>
+</html>

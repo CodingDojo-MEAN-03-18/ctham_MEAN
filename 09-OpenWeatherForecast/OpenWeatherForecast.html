@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>API_AJAX - Open Weather Forecast</title>
+    <title>JS Adv - Open Weather Forecast</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script>
     
@@ -12,6 +12,7 @@
     var api_key = "&units=imperial&&appid=1b07ff7ffd23e43f04e320c03f3625ab";
 
         $(document).ready(function() {
+
             $('form').submit(function() {
                 // your code here (build up your url)
                 var location = $('input[name="location"]').val();
@@ -20,6 +21,36 @@
                 console.log('url - '+url);
                 $.get(url, function(res) {
                     // your code here   
+                    console.log(res);
+                    // hack codes - begin
+                    $('#sign').html(``);
+                    localStorage.removeItem("lastVisit");
+                    localStorage.setItem("lastVisit", url);
+                    // back codes - end
+                    var html_string = `
+                        <h1>${res.name}, ${res.sys.country}</h1>
+                        <ul>
+                            <li>Temperature: ${res.main.temp}F</li>
+                            <li>Temperature in Min and Max: ${res.main.temp_min}F - ${res.main.temp_max}F</li>
+                            <li>Humidity: ${res.main.humidity}</li>
+                            <li>Weather: ${res.weather[0].description}</li>
+                        </ul>
+                    `;
+                    $('#landing_weather').html(html_string);
+                }, 'json');
+                // don't forget to return false so the page doesn't refresh
+                return false;
+            });
+
+            // hack codes - begin
+            // localStorage.removeItem("lastVisit"); // test for first time
+            var lastVisit = localStorage.getItem("lastVisit");
+            console.log(lastVisit);
+            if (lastVisit) {
+                console.log('Not first time');
+                $('#sign').html(``);
+                url = lastVisit;
+                $.get(url, function(res) {
                     console.log(res);
                     var html_string = `
                         <h1>${res.name}, ${res.sys.country}</h1>
@@ -30,12 +61,15 @@
                             <li>Weather: ${res.weather[0].description}</li>
                         </ul>
                     `;
-
                     $('#landing_weather').html(html_string);
                 }, 'json');
                 // don't forget to return false so the page doesn't refresh
                 return false;
-            });
+            } else {
+                console.log('yes first time');
+                $('#sign').html(`<h1>Welcome to OpenWeatherForecast </h1>`);
+            };
+            // back codes - end
         });
 
     </script>
@@ -45,6 +79,9 @@
         <input type="text" name="location">
         <input type="submit" value="Get Weather">
     </form>
+    <div id="sign">
+
+    </div>
     <div id="landing_weather">
 
     </div>

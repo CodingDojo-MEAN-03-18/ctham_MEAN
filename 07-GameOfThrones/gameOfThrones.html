@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>API_AJAX - Game of Thrones</title>
+    <link rel="stylesheet" href="gameOfThrones.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            var url_base = 'https://anapioficeandfire.com/api/houses/';
+            $('#header').on('click','img', function() {
+                var id = $(this).attr('id');
+                console.log(id);
+                $.get(url_base+id, function(kingdom) {
+                    console.log(kingdom);
+                    var HTMLstring = `
+                        <h1>Name: ${kingdom.name}</h1>
+                        <h3>Words: ${kingdom.words}</h3>
+                        <h3>Titles: ${kingdom.titles}</h3>
+                    `
+                    $('#details').html(HTMLstring);
+                }, 'json');
+            }) 
+        })
+    </script>
+</head>
+<body>
+    <div id="wrapper">
+        <div id="header">
+            <img id="362" src="./gameofthrones/stark.jpg" alt="">
+            <img id="378" src="./gameofthrones/targaryen.jpg" alt="">
+            <img id="229" src="./gameofthrones/lannister.jpg" alt="">
+            <img id="17" src="./gameofthrones/baratheon.png" alt="">
+        </div>
+        <div id="details">
+            <div>
+                <!-- details of kingdom -->
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,17 @@
+#wrapper {
+    width: 970px;
+    margin: 0px auto;
+}
+#details {
+    margin: 3px 170px;
+    padding: 10px 20px;
+    border: 1px solid black;
+}
+#details div {
+    width: 500px;
+    border: 1px solid black;
+}
+img {
+    /* width: 200px; */
+    height: 130px;
+}
